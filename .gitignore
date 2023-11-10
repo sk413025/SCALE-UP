@@ -1,0 +1,5 @@
+*.zip
+*.png
+*.pyc
+*.pth
+log.txt
