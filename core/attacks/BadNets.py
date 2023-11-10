@@ -341,6 +341,7 @@ class PoisonedCIFAR10(CIFAR10):
         tmp_list = list(range(total_num))
         random.shuffle(tmp_list)
         self.poisoned_set = frozenset(tmp_list[:poisoned_num])
+        import ipdb; ipdb.set_trace()
 
         # Add trigger to images
         if self.transform is None:

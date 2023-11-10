@@ -28,7 +28,7 @@ dataloader_root_dir = "badnet/benign_test_samples.pth" if args.model_type == "be
 device = torch.device("cuda:0")
 resnet18 = core.models.ResNet(18)
 model = resnet18
-model.load_state_dict(torch.load("badnet/ckpt_epoch_200.pth", map_location=device))
+model.load_state_dict(torch.load("badnet/ckpt_epoch_100.pth", map_location=device))
 
 model.to(device)
 model.eval()

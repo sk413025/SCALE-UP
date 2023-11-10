@@ -21,7 +21,7 @@ dataset = torchvision.datasets.CIFAR10
 
 transform_train = Compose([
     ToTensor(),
-    RandomHorizontalFlip()
+    # RandomHorizontalFlip()
 ])
 trainset = dataset('data', train=True, transform=transform_train, download=True)
 
@@ -58,7 +58,7 @@ badnets = core.BadNets(
     model=core.models.ResNet(18),
     # model=core.models.BaselineMNISTNetwork(),
     loss=nn.CrossEntropyLoss(),
-    y_target=1,
+    y_target=0,
     poisoned_rate=0.20,
     seed=666
 )
