@@ -7,11 +7,11 @@ import argparse
 import numpy as np
 import torch
 import torchvision.models as models
+import core
 
 parser = argparse.ArgumentParser(description="PyTorch")
-parser.add_argument(
-    "--gpu-id", default="0,1", type=str, help="id(s) for CUDA_VISIBLE_DEVICES"
-)
+parser.add_argument("--gpu-id", default="0,1", type=str, help="id(s) for CUDA_VISIBLE_DEVICES")
+parser.add_argument("--model_type", default="benign", type=str, help="Specify the model type: benign or backdoor")
 
 args = parser.parse_args()
 state = {k: v for k, v in args._get_kwargs()}
@@ -22,15 +22,14 @@ global_seed = 666
 deterministic = True
 torch.manual_seed(global_seed)
 CUDA_VISIBLE_DEVICES = args.gpu_id
-# dataloader_root_dir = 'WaNet/poisoned_test_samples_WaNet.pth'
-dataloader_root_dir = "benign_test_samples.pth"
 
+dataloader_root_dir = "benign_test_samples.pth" if args.model_type == "benign" else 'poisoned_test_samples_BadNets.pth'
 
 device = torch.device("cuda:0")
-resnet18 = models.resnet18(pretrained=False)
-resnet18.fc = torch.nn.Linear(512, 200)
+resnet18 = core.models.ResNet(18)
 model = resnet18
-model.load_state_dict(torch.load("BadNets/ckpt_epoch_200.pth", map_location=device))
+model.load_state_dict(torch.load("experiments/train_poisoned_CIFAR10_2023-11-10_15:43:12/ckpt_epoch_2.pth", map_location=device))
+
 model.to(device)
 model.eval()
 
@@ -61,4 +60,8 @@ print(decisions)
 print(np.mean(decisions[:, 0] == np.reshape(labels.numpy(), 10000)))
 a = decisions[decisions[:, 0] == np.reshape(labels.numpy(), 10000)]
 print(a.shape)
-np.save("saved_np/BadNets/tiny_benign.npy", decisions)
+
+if args.model_type == "benign":
+    np.save("saved_np/BadNets/cifar10_benign.npy", decisions)
+elif args.model_type == "backdoor":
+    np.save("saved_np/BadNets/cifar10_bd.npy", decisions)

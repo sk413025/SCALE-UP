@@ -12,4 +12,6 @@ def AUROC_Score(pred_in, pred_out, file):
     fpr, tpr, thresholds = metrics.roc_curve(y, pred, pos_label=1)
     plt.plot(fpr, tpr, label=file)
     plt.savefig(file + ".png", bbox_inches="tight")
-    print(metrics.roc_auc_score(y, pred))
+    auc_score = metrics.roc_auc_score(y, pred)
+    print(auc_score)
+    return auc_score

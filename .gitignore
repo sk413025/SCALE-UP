@@ -2,4 +2,10 @@
 *.png
 *.pyc
 *.pth
+*.npy
 log.txt
+core/.ipynb_checkpoints/
+core/attacks/.ipynb_checkpoints/
+core/defenses/.ipynb_checkpoints/
+core/models/.ipynb_checkpoints/
+data/

@@ -30,7 +30,8 @@ global_seed = 666
 deterministic = True
 torch.manual_seed(global_seed)
 CUDA_VISIBLE_DEVICES = args.gpu_id
-dataloader_root_dir = 'poisoned_test_dataset_WaNet_VGG.pth'
+dataloader_root_dir = 'poisoned_test_dataset_BadNets.pth'
+# dataloader_root_dir = 'poisoned_test_dataset_WaNet_VGG.pth'
 #dataloader_root_dir = 'poisoned_test_dataset_ISSBA_VGG.pth'
 #dataloader_root_dir = 'poisoned_test_dataset_BadNets_VGG.pth'
 #dataloader_root_dir = 'poisoned_test_dataset_TUAP_VGG.pth'
@@ -47,7 +48,8 @@ for batch_id, batch in enumerate(poisoned_test_dataloader):
     if (batch_id + 1) % 100 == 0:
         print((batch_id + 1)/100)
 
-torch.save(poisoned_test_samples, 'poisoned_test_samples_WaNet_VGG.pth')
+torch.save(poisoned_test_samples, 'poisoned_test_samples_BadNets.pth')
+#torch.save(poisoned_test_samples, 'poisoned_test_samples_WaNet_VGG.pth')
 #torch.save(poisoned_test_samples, 'poisoned_test_samples_ISSBA_VGG.pth')
 #torch.save(poisoned_test_samples, 'poisoned_test_samples_BadNets_VGG.pth')
 #torch.save(poisoned_test_samples, 'poisoned_test_samples_TUAP_VGG.pth')
