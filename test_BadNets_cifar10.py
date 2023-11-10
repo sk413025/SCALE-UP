@@ -63,35 +63,35 @@ badnets = core.BadNets(
     seed=666
 )
 
-# train benign model
-schedule = {
-    'device': 'GPU',
-    'CUDA_VISIBLE_DEVICES': '0',
-    'GPU_num': 1,
+# # train benign model
+# schedule = {
+#     'device': 'GPU',
+#     'CUDA_VISIBLE_DEVICES': '0',
+#     'GPU_num': 1,
 
-    'benign_training': True,
-    'batch_size': 128,
-    'num_workers': 16,
+#     'benign_training': True,
+#     'batch_size': 128,
+#     'num_workers': 16,
 
-    'lr': 0.1,
-    'momentum': 0.9,
-    'weight_decay': 5e-4,
-    'gamma': 0.1,
-    'schedule': [150, 180],
+#     'lr': 0.1,
+#     'momentum': 0.9,
+#     'weight_decay': 5e-4,
+#     'gamma': 0.1,
+#     'schedule': [150, 180],
 
-    'epochs': 200,
+#     'epochs': 200,
 
-    'log_iteration_interval': 100,
-    'test_epoch_interval': 10,
-    'save_epoch_interval': 10,
+#     'log_iteration_interval': 100,
+#     'test_epoch_interval': 10,
+#     'save_epoch_interval': 10,
 
-    'save_dir': 'experiments',
-    'experiment_name': 'train_benign_CIFAR10'
-}
+#     'save_dir': 'experiments',
+#     'experiment_name': 'train_benign_CIFAR10'
+# }
 
-badnets.train(schedule)
+# badnets.train(schedule)
 
-# train attacked model
+# train Infected model
 schedule = {
     'device': 'GPU',
     'CUDA_VISIBLE_DEVICES': '0',
