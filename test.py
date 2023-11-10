@@ -15,7 +15,7 @@ def process(file_data):
 
 if __name__ == "__main__":
     AUROC_Score(
-        process("saved_np/WaNet/tiny_bd.npy"),
-        process("saved_np/WaNet/tiny_benign.npy"),
-        "tiny_imagenet",
+        process("saved_np/BadNets/cifar10_bd.npy"),
+        process("saved_np/BadNets/cifar10_benign.npy"),
+        "cifar10",
     )
