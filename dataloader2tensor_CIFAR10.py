@@ -30,7 +30,7 @@ global_seed = 666
 deterministic = True
 torch.manual_seed(global_seed)
 CUDA_VISIBLE_DEVICES = args.gpu_id
-dataloader_root_dir = 'poisoned_test_dataset_BadNets.pth'
+dataloader_root_dir = 'badnet/poisoned_test_dataset_BadNets.pth'
 # dataloader_root_dir = 'poisoned_test_dataset_WaNet_VGG.pth'
 #dataloader_root_dir = 'poisoned_test_dataset_ISSBA_VGG.pth'
 #dataloader_root_dir = 'poisoned_test_dataset_BadNets_VGG.pth'

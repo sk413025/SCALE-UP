@@ -59,7 +59,7 @@ badnets = core.BadNets(
     # model=core.models.BaselineMNISTNetwork(),
     loss=nn.CrossEntropyLoss(),
     y_target=1,
-    poisoned_rate=0.05,
+    poisoned_rate=0.20,
     seed=666
 )
 
@@ -107,9 +107,9 @@ schedule = {
     'gamma': 0.1,
     'schedule': [150, 180],
 
-    'epochs': 200,
+    'epochs': 100,
 
-    'log_iteration_interval': 100,
+    'log_iteration_interval': 50,
     'test_epoch_interval': 10,
     'save_epoch_interval': 10,
 

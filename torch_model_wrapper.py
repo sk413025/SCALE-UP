@@ -41,7 +41,7 @@ poisoned_test_samples = poisoned_test_samples + 0.02 * torch.rand(
     size=poisoned_test_samples.shape, device=device
 )
 
-labels = torch.load("benign_labels.pth")
+labels = torch.load("badnet/benign_labels.pth")
 
 
 decisions = np.empty((10000, 11))
