@@ -23,12 +23,12 @@ deterministic = True
 torch.manual_seed(global_seed)
 CUDA_VISIBLE_DEVICES = args.gpu_id
 
-dataloader_root_dir = "benign_test_samples.pth" if args.model_type == "benign" else 'poisoned_test_samples_BadNets.pth'
+dataloader_root_dir = "badnet/benign_test_samples.pth" if args.model_type == "benign" else 'badnet/poisoned_test_samples_BadNets.pth'
 
 device = torch.device("cuda:0")
 resnet18 = core.models.ResNet(18)
 model = resnet18
-model.load_state_dict(torch.load("experiments/train_poisoned_CIFAR10_2023-11-10_15:43:12/ckpt_epoch_2.pth", map_location=device))
+model.load_state_dict(torch.load("badnet/ckpt_epoch_200.pth", map_location=device))
 
 model.to(device)
 model.eval()

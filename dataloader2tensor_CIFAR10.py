@@ -48,7 +48,7 @@ for batch_id, batch in enumerate(poisoned_test_dataloader):
     if (batch_id + 1) % 100 == 0:
         print((batch_id + 1)/100)
 
-torch.save(poisoned_test_samples, 'poisoned_test_samples_BadNets.pth')
+torch.save(poisoned_test_samples, 'badnet/poisoned_test_samples_BadNets.pth')
 #torch.save(poisoned_test_samples, 'poisoned_test_samples_WaNet_VGG.pth')
 #torch.save(poisoned_test_samples, 'poisoned_test_samples_ISSBA_VGG.pth')
 #torch.save(poisoned_test_samples, 'poisoned_test_samples_BadNets_VGG.pth')
