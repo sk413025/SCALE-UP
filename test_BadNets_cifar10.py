@@ -46,8 +46,11 @@ for batch_id, batch in enumerate(test_loader):
     if (batch_id + 1) % 100 == 0:
         print((batch_id + 1)/100)
 
-torch.save(test_samples, 'benign_test_samples.pth')
-torch.save(test_labels, 'benign_labels.pth')
+directory = 'badnet'
+if not os.path.exists(directory):
+    os.makedirs(directory)
+torch.save(test_samples, os.path.join(directory, 'benign_test_samples.pth'))
+torch.save(test_labels, os.path.join(directory, 'benign_labels.pth'))
 
 badnets = core.BadNets(
     train_dataset=trainset,
@@ -117,6 +120,6 @@ schedule = {
 badnets.train(schedule)
 
 poisoned_train_dataset, poisoned_test_dataset = badnets.get_poisoned_dataset()
-torch.save(poisoned_test_dataset, 'poisoned_test_dataset_BadNets.pth')
+torch.save(poisoned_test_dataset, os.path.join(directory, 'poisoned_test_dataset_BadNets.pth'))
 
 
