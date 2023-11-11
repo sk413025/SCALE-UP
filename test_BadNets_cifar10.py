@@ -6,7 +6,7 @@ https://github.com/THUYimingLi/BackdoorBox/blob/main/tests/test_cifar10.py
 
 
 import os
-
+import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
@@ -52,6 +52,12 @@ if not os.path.exists(directory):
 torch.save(test_samples, os.path.join(directory, 'benign_test_samples.pth'))
 torch.save(test_labels, os.path.join(directory, 'benign_labels.pth'))
 
+pattern = torch.zeros((32, 32), dtype=torch.uint8)
+pattern[-4:, -4:] = torch.tensor(np.random.randint(low=0, high=256, size=16).reshape(4, 4))
+
+weight = torch.zeros((32, 32), dtype=torch.float32)
+weight[-4:, -4:] = 1.0
+
 badnets = core.BadNets(
     train_dataset=trainset,
     test_dataset=testset,
@@ -60,6 +66,8 @@ badnets = core.BadNets(
     loss=nn.CrossEntropyLoss(),
     y_target=0,
     poisoned_rate=0.20,
+    pattern=pattern,
+    weight=weight,
     seed=666
 )
 
