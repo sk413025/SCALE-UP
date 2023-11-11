@@ -53,7 +53,7 @@ torch.save(test_samples, os.path.join(directory, 'benign_test_samples.pth'))
 torch.save(test_labels, os.path.join(directory, 'benign_labels.pth'))
 
 pattern = torch.zeros((32, 32), dtype=torch.uint8)
-pattern[-4:, -4:] = torch.tensor(np.random.randint(low=0, high=256, size=16).reshape(4, 4))
+pattern[-4:, -4:] = torch.tensor(np.random.random(size=16).reshape(4, 4))
 
 weight = torch.zeros((32, 32), dtype=torch.float32)
 weight[-4:, -4:] = 1.0
