@@ -12,7 +12,7 @@ import os
 import os.path as osp
 from copy import deepcopy
 import time
-from turtle import forward
+# from turtle import forward
 import numpy as np
 import random
 

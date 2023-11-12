@@ -1,11 +1,7 @@
 #!/bin/bash
 
-# conda activate TomTestEnv
-
-export PYTHONPATH="/home/lab/SCALE-UP:$PYTHONPATH"
-cd /home/lab/SCALE-UP
-# rm badnet/*
-
+export PYTHONPATH="~/SCALE-UP:$PYTHONPATH"
+cd ~/SCALE-UP
 python test_BadNets_cifar10.py
 
 newest_folder=$(ls -dt experiments/train_poisoned_CIFAR10_*/ | head -1)
