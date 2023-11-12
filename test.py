@@ -14,8 +14,12 @@ def process(file_data):
 
 
 if __name__ == "__main__":
-    AUROC_Score(
+    auc_score, f1 = AUROC_Score(
         process("saved_np/BadNets/cifar10_bd.npy"),
         process("saved_np/BadNets/cifar10_benign.npy"),
         "cifar10",
     )
+    
+    with open('log.txt', 'a') as f:
+        f.write(f"AUC Score: {auc_score}\n")
+        f.write(f"F1 Score: {f1}\n")
